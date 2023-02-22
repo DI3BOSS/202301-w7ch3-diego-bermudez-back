@@ -1,13 +1,29 @@
-import express from "express";
-import morgan from "morgan";
-import cors from "cors";
-import pokemonsRouter from "./server/routers/pokemonsRouters";
+import "./loadEnvironment.js";
+import startServer from "./server/startServer.js";
+import connectToDatabase from "./database/connectToDatabase.js";
+import mongoose from "mongoose";
+import chalk from "chalk";
+import createDebug from "debug";
 
-export const app = express();
+export const debug = createDebug("pokemons:*");
 
-app.disable("x-powered-by");
-app.use(morgan("dev"));
-app.use(express.json());
-app.use(cors());
+const port = process.env.PORT ?? 4000;
+const mongoDdUrl = process.env.MONGODB_URL;
 
-app.use("/pokeboss", pokemonsRouter);
+mongoose.set("toJSON", {
+  virtuals: true,
+  transform(doc, ret) {
+    delete ret._id;
+    delete ret.__v;
+  },
+});
+
+try {
+  await connectToDatabase(mongoDdUrl!);
+  debug(chalk.green("Connected to data base"));
+
+  await startServer(+port);
+  debug(chalk.green(`Server listening on port ${port}`));
+} catch (error) {
+  debug(error.message);
+}
