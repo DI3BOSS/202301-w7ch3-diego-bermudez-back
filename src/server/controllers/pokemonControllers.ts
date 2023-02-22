@@ -1,6 +1,6 @@
 import type { Request, Response } from "express";
 import CustomError from "../../CustomError/CustomError";
-import Pokemon from "../../database/models/pokemon";
+import Pokemon from "../../database/models/pokemon.js";
 
 export const getPokemons = async (req: Request, res: Response) => {
   try {
