@@ -1,7 +1,7 @@
-import { app } from "../../index.js";
-import type CustomError from "../../CustomError/CustomError.js";
+import { app } from "./routers/index.js";
+import type CustomError from "../CustomError/CustomError.js";
 
-export const startServer = async (port: number) =>
+const startServer = async (port: number) =>
   new Promise((resolve, reject) => {
     const server = app.listen(port, () => {
       console.log(`Server is listening requests from ${port} port.`);
@@ -19,3 +19,5 @@ export const startServer = async (port: number) =>
       reject(new Error(errorMessage));
     });
   });
+
+export default startServer;
