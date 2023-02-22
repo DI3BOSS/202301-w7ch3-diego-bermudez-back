@@ -1,7 +1,7 @@
 import express from "express";
 import morgan from "morgan";
 import cors from "cors";
-import pokemonsRouter from "./server/routers/pokemonsRouters";
+import pokemonsRouter from "./pokemonsRouters.js";
 
 export const app = express();
 

@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-import CustomError from "../CustomError/CustomError";
+import CustomError from "../CustomError/CustomError.js";
 
 const connectToDatabase = async (url: string) => {
   mongoose.set("strictQuery", false);
