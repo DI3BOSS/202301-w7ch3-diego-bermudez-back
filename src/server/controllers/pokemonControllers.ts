@@ -5,6 +5,7 @@ import Pokemon from "../../database/models/pokemon.js";
 export const getPokemons = async (req: Request, res: Response) => {
   try {
     const pokemons = await Pokemon.find({});
+
     res.status(200).json({ pokemons });
   } catch (error) {
     const customError = new CustomError(
@@ -12,6 +13,7 @@ export const getPokemons = async (req: Request, res: Response) => {
       500,
       "Couldn't retrieve pokemons"
     );
+
     throw customError;
   }
 };
