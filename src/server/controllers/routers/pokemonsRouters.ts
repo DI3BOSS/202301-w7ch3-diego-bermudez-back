@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { getPokemons } from "../pokemonControllers";
+import { getPokemons } from "../pokemonControllers.js";
 
 // eslint-disable-next-line new-cap
 const pokemonsRouter = Router();
