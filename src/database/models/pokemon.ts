@@ -1,7 +1,6 @@
-import mongoose from "mongoose";
+import { model, Schema } from "mongoose";
 
-const pokemonSchema = new mongoose.Schema({
-  _id: String,
+const pokemonSchema = new Schema({
   number: Number,
   name: String,
   type: String,
@@ -9,6 +8,6 @@ const pokemonSchema = new mongoose.Schema({
   animation: String,
 });
 
-const Pokemon = mongoose.model("Pokemon", pokemonSchema);
+const Pokemon = model("Pokemon", pokemonSchema, "Pokeboss");
 
 export default Pokemon;
