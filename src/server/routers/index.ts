@@ -10,4 +10,4 @@ app.use(morgan("dev"));
 app.use(express.json());
 app.use(cors());
 
-app.use("/pokeboss", pokemonsRouter);
+app.use("/Pokeboss", pokemonsRouter);
